@@ -5,6 +5,9 @@
 
 ## 🎯 Description
 
+> [!NOTE]
+> I created this repository because [my PR](https://github.com/gskinner/regexr/pull/445) was never taken in account.
+
 The goal of this image is to provide a local instance of [RegExr](https://regexr.com/).
 
 ## 📦 Build
