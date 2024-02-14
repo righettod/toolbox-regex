@@ -2,7 +2,7 @@
 
 ## 🎯 Description
 
-The goal of this image is to provide a local instance of [Regexr](https://regexr.com/).
+The goal of this image is to provide a local instance of [RegExr](https://regexr.com/).
 
 ## 📦 Build
 
