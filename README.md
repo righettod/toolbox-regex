@@ -14,6 +14,10 @@ cd toolbox-regex
 docker build . -t righettod/toolbox-regex
 ```
 
+💡 The image is build every week and pushed to the GitHub image repository. You can retrieve it with the following command:
+
+`docker pull ghcr.io/righettod/toolbox-regex:main`
+
 ## 🤝 Sources & credits
 
 * [RegExr author](https://github.com/gskinner/regexr).
