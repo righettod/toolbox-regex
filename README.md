@@ -24,6 +24,23 @@ docker build . -t righettod/toolbox-regex
 
 `docker pull ghcr.io/righettod/toolbox-regex:main`
 
+## 👨‍💻 Usage
+
+You can use the following PowerShell code snippet:
+
+```powershell
+$toolUrl = "http://localhost:3000"
+docker run -d -p 3000:3000 ghcr.io/righettod/toolbox-regex:main
+$status = 0
+while ($status -ne 200) {
+	Write-Host "[+] Wait 15 seconds that the container starts..." -ForegroundColor Yellow
+	Start-Sleep 15
+	$status = (Invoke-WebRequest -Uri $toolUrl -UseBasicParsing).StatusCode
+}
+Write-Host "[i] URL to use is $toolUrl" -ForegroundColor Cyan
+Firefox.exe $toolUrl
+```
+
 ## 🤝 Sources & credits
 
 * [RegExr author](https://github.com/gskinner/regexr).
