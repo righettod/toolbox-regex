@@ -10,7 +10,7 @@ jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
     steps:
       - name: Checkout repository
@@ -37,3 +37,12 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+      - name: Update image information file
+        run: docker image inspect "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main" > image-info.json; git config --global user.email "gha@github.com"; git config --global user.name "GHActionBot"; git commit -m "Sync image information file" image-info.json; git push
