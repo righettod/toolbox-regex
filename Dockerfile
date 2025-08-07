@@ -3,7 +3,7 @@ FROM node:13-alpine
 # docker build -t righettod/regexr -f Dockerfile-regexr .
 # docker run -p 3000:3000 righettod/regexr
 RUN apk update
-RUN apk add bash dos2unix git grep sed
+RUN apk add bash dos2unix git grep sed sudo
 RUN npm install --ignore-scripts --global gulp-cli
 RUN git clone --depth 1 https://github.com/gskinner/regexr.git /regexr
 COPY protected-run.sh /regexr/protected-run.sh
