@@ -6,6 +6,9 @@ RUN apk update
 RUN apk add git
 RUN npm install --ignore-scripts --global gulp-cli
 RUN git clone --depth 1 https://github.com/gskinner/regexr.git /regexr
+COPY add-protections.sh /regexr/add-protections.sh
+RUN chmod +x /regexr/add-protections.sh
+RUN cd /regexr && bash add-protections.sh
 RUN addgroup -S appgroup
 RUN adduser -S runner -G appgroup
 RUN chown -R runner:appgroup /regexr
