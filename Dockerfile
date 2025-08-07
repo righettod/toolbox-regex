@@ -9,12 +9,12 @@ RUN git clone --depth 1 https://github.com/gskinner/regexr.git /regexr
 COPY protected-run.sh /regexr/protected-run.sh
 RUN dos2unix /regexr/protected-run.sh
 RUN chmod +x /regexr/protected-run.sh
+RUN addgroup -S appgroup
+RUN adduser -S runner -G appgroup
 # Use the root user to be able to update the hosts file at container level
-#RUN addgroup -S appgroup
-#RUN adduser -S runner -G appgroup
-#RUN chown -R runner:appgroup /regexr
 #USER runner
 RUN cd /regexr && npm install
+RUN chown -R runner:appgroup /regexr
 EXPOSE 3000
 EXPOSE 3001
 WORKDIR /regexr
