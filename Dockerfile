@@ -6,10 +6,9 @@ RUN apk update
 RUN apk add bash dos2unix git grep sed
 RUN npm install --ignore-scripts --global gulp-cli
 RUN git clone --depth 1 https://github.com/gskinner/regexr.git /regexr
-COPY add-protections.sh /regexr/add-protections.sh
-RUN dos2unix /regexr/add-protections.sh
-RUN chmod +x /regexr/add-protections.sh
-RUN cd /regexr && bash add-protections.sh
+COPY protected-run.sh /regexr/protected-run.sh
+RUN dos2unix /regexr/protected-run.sh
+RUN chmod +x /regexr/protected-run.sh
 RUN addgroup -S appgroup
 RUN adduser -S runner -G appgroup
 RUN chown -R runner:appgroup /regexr
@@ -18,4 +17,4 @@ RUN cd /regexr && npm install
 EXPOSE 3000
 EXPOSE 3001
 WORKDIR /regexr
-CMD ["gulp"]
+CMD ["/bin/bash", "/regexr/protected-run.sh"]
