@@ -9,4 +9,4 @@ rm /tmp/hosts.txt
 # Add a CSP to handle the browser level
 sed -i 's/<head lang="en">/<head lang="en"><meta http-equiv="Content-Security-Policy" content="default-src '\''self'\'' '\''unsafe-inline'\''; form-action '\''self'\''; base-uri '\''self'\''; object-src '\''none'\''; frame-ancestors '\''none'\''; worker-src '\''self'\'' blob:"\/>/g' index.html
 # Start the app
-gulp
+sudo -u runner gulp
